@@ -3,30 +3,34 @@ const dotenv = require("dotenv");
 
 const router = require("./routes/index");
 const { sequelize } = require("./models");
-// const cors = require("cors");
+const cors = require("cors");
 
 dotenv.config();
 
 const app = express();
-// Add headers
-app.use(function (req, res, next) {
 
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'https://ornate-sprinkles-acf0af.netlify.app');
+app.use(cors());
+// // Add headers
+// app.use(function (req, res, next) {
 
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//     // Website you wish to allow to connect
+//     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
 
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//     // Request methods you wish to allow
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
+//     // Request headers you wish to allow
+//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
-  // Pass to next layer of middleware
-  next();
-});
+//     // Set to true if you need the website to include cookies in the requests sent
+//     // to the API (e.g. in case you use sessions)
+//     res.setHeader('Access-Control-Allow-Credentials', true);
+
+//     // Pass to next layer of middleware
+//     next();
+// });
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -39,12 +43,11 @@ app.use(express.urlencoded({ extended: false }));
   }
 })();
 
-
 app.use("/api", router);
 
-app.get('/', (req,res,next) => {
-  res.status(200).send('I am done');
-})
+app.get("/", (req, res, next) => {
+  res.status(200).send("I am done");
+});
 
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
