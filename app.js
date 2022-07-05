@@ -8,7 +8,8 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors())
+app.options('*', cors()) // include before other routes
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
