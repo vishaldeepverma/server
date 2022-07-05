@@ -19,7 +19,7 @@ const app = express();
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'https://silver-dango-9c6b90.netlify.app');
+  res.setHeader('Access-Control-Allow-Origin', 'http://18.207.203.239:8082');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
