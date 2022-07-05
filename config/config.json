@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
+    "username": "username",
     "password": "password",
-    "database": "custom_theme",
-    "host": "127.0.0.1",
+    "database": "ebdb",
+    "host": "aa13oz8d1d5qc82.cwu9l8csmcsq.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "logging": false
   },
