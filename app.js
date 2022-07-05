@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 
 (async function () {
   try {
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ force: true });
     console.log("database Synced");
   } catch (error) {
     console.log(`got on error on sync db ${error}`);
