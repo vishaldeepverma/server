@@ -3,16 +3,20 @@ const express = require("express");
 
 const router = require("./routes/index");
 const { sequelize } = require("./models");
-const cors = require("cors");
 
 const app = express();
 
-var corsOptions = {
-  origin: 'https://silver-dango-9c6b90.netlify.app',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
-app.use(cors(corsOptions));
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "https://silver-dango-9c6b90.netlify.app");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  ); // If needed
+  res.setHeader("Access-Control-Allow-Headers", "*"); // If needed
+  res.setHeader("Access-Control-Allow-Credentials", true); // If needed
+  // Pass to next layer of middleware
+  next();
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
