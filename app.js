@@ -21,7 +21,12 @@ app.use(express.urlencoded({ extended: false }));
   }
 })();
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://ornate-sprinkles-acf0af.netlify.app",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions));
 
 app.use("/api", router);
 
