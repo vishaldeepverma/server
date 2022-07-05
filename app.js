@@ -3,18 +3,19 @@ const dotenv = require("dotenv");
 
 const router = require("./routes/index");
 const { sequelize } = require("./models");
-const cors = require("cors");
+// const cors = require("cors");
 
 dotenv.config();
 
 const app = express();
 
-var corsOptions = {
-  origin: 'https://silver-dango-9c6b90.netlify.app',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
