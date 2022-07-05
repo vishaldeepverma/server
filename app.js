@@ -1,22 +1,14 @@
 require("dotenv")();
 const express = require("express");
+const cors = require("cors");
+
 
 const router = require("./routes/index");
 const { sequelize } = require("./models");
 
 const app = express();
 
-app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "https://silver-dango-9c6b90.netlify.app");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  ); // If needed
-  res.setHeader("Access-Control-Allow-Headers", "*"); // If needed
-  res.setHeader("Access-Control-Allow-Credentials", true); // If needed
-  // Pass to next layer of middleware
-  next();
-});
+app.use(cors({origin:true,credentials: true}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
