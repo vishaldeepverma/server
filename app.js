@@ -11,6 +11,7 @@ const app = express();
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "https://silver-dango-9c6b90.netlify.app/");
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
